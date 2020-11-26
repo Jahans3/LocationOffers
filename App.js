@@ -1,20 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { Notifications } from 'react-native-notifications';
-
-function useRegisterNotifications() {
-  useEffect(() => {
-    Notifications.events().registerNotificationReceivedForeground((notification: Notification, completion) => {
-      console.log(`Notification received in foreground: ${notification.title} : ${notification.body}`);
-      completion({ alert: true, sound: true, badge: true });
-    });
-
-    Notifications.events().registerNotificationOpened((notification: Notification, completion) => {
-      console.log(`Notification opened: ${notification.payload}`);
-      completion();
-    });
-  }, []);
-}
 
 function sendNotification() {
   Notifications.postLocalNotification({
@@ -25,8 +11,6 @@ function sendNotification() {
 }
 
 export default function App() {
-  useRegisterNotifications();
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Lloyds Location Offers</Text>
