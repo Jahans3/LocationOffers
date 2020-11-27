@@ -1,23 +1,16 @@
+import 'react-native-gesture-handler'; // Must be at top of file
+
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { Notifications } from 'react-native-notifications';
-
-function sendNotification() {
-  Notifications.postLocalNotification({
-    title: 'Lloyds Offers',
-    body: 'Get 50% off at Pret ${location}',
-    extra: 'data',
-  });
-}
+import { NavigationContainer } from '@react-navigation/native';
+import OffersStack from './src/router/OffersStack';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Lloyds Location Offers</Text>
-      <TouchableOpacity onPress={sendNotification} style={styles.button}>
-        <Text style={styles.buttonText}>Send Test Notification</Text>
-      </TouchableOpacity>
-    </View>
+    <NavigationContainer>
+      <OffersStack />
+    </NavigationContainer>
   );
 }
 
