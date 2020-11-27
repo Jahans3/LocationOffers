@@ -112,7 +112,7 @@ const offers = [
 export default function OffersList() {
   useEffect(() => {
     setTimeout(() => {
-      sendNotification(`You have ${offers.length} cashback offers within 3km!`);
+      sendNotification(`You have ${offers.length} cashback offers within 3km!`)();
     }, 3000);
   }, []);
   return (
