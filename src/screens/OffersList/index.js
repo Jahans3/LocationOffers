@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView, TouchableOpacity } from 'react-native';
 import { Notifications } from 'react-native-notifications';
-import { Container, Header, Content, Card, CardItem, Body, Text, Thumbnail, Left } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Body, Text, Thumbnail, Left, Title } from 'native-base';
+import MapView, { Marker } from 'react-native-maps';
 
 function sendNotification(offerText) {
   return () => {
@@ -111,8 +112,39 @@ const offers = [
 export default function OffersList() {
   return (
     <Container>
-      <Header style={{ backgroundColor: '#006a4d', paddingLeft: 45 }} />
+      <Header style={{ backgroundColor: '#006a4d', paddingLeft: 45 }}>
+        <Body>
+          <Title>You have {offers.length} offers within 1km!</Title>
+        </Body>
+      </Header>
       <Content>
+        <Card>
+          <CardItem>
+            <MapView
+              showsUserLocation
+              minZoomLevel={1}
+              style={{ flex: 1, height: 250, width: '100%' }}
+              region={{
+                latitude: 51.51758926035574,
+                longitude: -0.09363967616390254,
+                latitudeDelta: 0,
+                longitudeDelta: 0,
+              }}>
+              {offers.map(({ offerTitle, coordinates }) => (
+                <Marker
+                  title={offerTitle}
+                  coordinate={{
+                    latitude: coordinates.lat,
+                    longitude: coordinates.lng,
+                    latitudeDelta: 0,
+                    longitudeDelta: 0,
+                  }}
+                  description="Cashback offer"
+                />
+              ))}
+            </MapView>
+          </CardItem>
+        </Card>
         <ScrollView>
           {offers.map((offer) => (
             <PlaceholderOffer key={offer.offerName} {...offer} />

@@ -18,6 +18,12 @@ const routeProps = {
 export default function Offer() {
   const route = useRoute();
   const { offerName, offerTitle, cashback, expiryDate, coordinates, thumbnail } = route.params;
+  const coords = {
+    latitude: coordinates.lat,
+    longitude: coordinates.lng,
+    latitudeDelta: 0,
+    longitudeDelta: 0,
+  };
   return (
     <Container>
       <Content>
@@ -28,17 +34,7 @@ export default function Offer() {
         </Header>
         <Card style={{ flex: 1, height: 500, width: '100%' }}>
           <MapView showsUserLocation style={{ flex: 1, height: 500, width: '100%' }} region={routeProps.coordinates}>
-            <Marker
-              title={offerName}
-              coordinate={{
-                latitude: coordinates.lat,
-                longitude: coordinates.lng,
-                latitudeDelta: 0,
-                longitudeDelta: 0,
-              }}
-              // image={thumbnail}
-              description="Cashback offer"
-            />
+            <Marker title={offerName} coordinate={coords} description="Cashback offer" />
           </MapView>
         </Card>
         <Card>
