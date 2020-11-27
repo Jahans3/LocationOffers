@@ -1,7 +1,7 @@
 import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { useRoute } from '@react-navigation/native';
-import { Container, Card, Text, CardItem, Content, Header, Left, Body, Title, Right } from 'native-base';
+import { Container, Card, Text, CardItem, Content, Header, Left, Body, Title, Right, Thumbnail } from 'native-base';
 
 const routeProps = {
   title: 'Offer title',
@@ -30,10 +30,9 @@ export default function Offer() {
           <MapView showsUserLocation style={{ flex: 1, height: 500, width: '100%' }} region={routeProps.coordinates}>
             <Marker
               title={offerName}
-              // coordinate={coordinates}
               coordinate={{
-                latitude: 51.51758926035574,
-                longitude: -0.09363967616390254,
+                latitude: coordinates.lat,
+                longitude: coordinates.lng,
                 latitudeDelta: 0,
                 longitudeDelta: 0,
               }}
@@ -44,6 +43,7 @@ export default function Offer() {
         </Card>
         <Card>
           <CardItem>
+            <Thumbnail source={{ uri: thumbnail }} style={{ marginRight: 15 }} />
             <Text style={{ fontSize: 27, fontWeight: '700' }}>{offerName}</Text>
           </CardItem>
           <CardItem>
