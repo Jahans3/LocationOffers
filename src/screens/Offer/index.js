@@ -17,34 +17,41 @@ const routeProps = {
 
 export default function Offer() {
   const route = useRoute();
-  const { offerName, offerTitle, cashback, expiryDate } = route.params;
+  const { offerName, offerTitle, cashback, expiryDate, coordinates, thumbnail } = route.params;
   return (
     <Container>
       <Content>
-        <Header style={{ backgroundColor: '#006a4d' }}>
-          <Left />
+        <Header style={{ backgroundColor: '#006a4d', paddingLeft: 45 }}>
           <Body>
-            <Title>{routeProps.title}</Title>
+            <Title>{offerName}</Title>
           </Body>
-          <Right />
         </Header>
         <Card style={{ flex: 1, height: 500, width: '100%' }}>
-          <MapView style={{ flex: 1, height: 500, width: '100%' }} region={routeProps.coordinates}>
+          <MapView showsUserLocation style={{ flex: 1, height: 500, width: '100%' }} region={routeProps.coordinates}>
             <Marker
-              title={routeProps.title}
-              coordinate={routeProps.coordinates}
-              image={routeProps.image}
-              description={routeProps.description}
+              title={offerName}
+              // coordinate={coordinates}
+              coordinate={{
+                latitude: 51.51758926035574,
+                longitude: -0.09363967616390254,
+                latitudeDelta: 0,
+                longitudeDelta: 0,
+              }}
+              image={thumbnail}
+              description="Cashback offer"
             />
           </MapView>
         </Card>
         <Card>
           <CardItem>
-            <Text style={{ fontSize: 27, fontWeight: '700' }}>{routeProps.title}</Text>
+            <Text style={{ fontSize: 27, fontWeight: '700' }}>{offerName}</Text>
           </CardItem>
           <CardItem>
             <Body>
-              <Text>{routeProps.description}</Text>
+              <Text note>
+                Get {cashback} Cashback now at {offerTitle}
+              </Text>
+              <Text note>Expires: {expiryDate}</Text>
             </Body>
           </CardItem>
         </Card>
