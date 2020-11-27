@@ -18,7 +18,7 @@ export default function Offer() {
   return (
     <Container>
       <Content>
-        <Header>
+        <Header style={{ backgroundColor: '#006a4d' }}>
           <Left />
           <Body>
             <Title>{routeProps.title}</Title>
