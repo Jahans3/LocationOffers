@@ -36,7 +36,7 @@ export default function Offer() {
                 latitudeDelta: 0,
                 longitudeDelta: 0,
               }}
-              image={thumbnail}
+              // image={thumbnail}
               description="Cashback offer"
             />
           </MapView>
