@@ -1,5 +1,6 @@
 import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
+import { useRoute } from '@react-navigation/native';
 import { Container, Card, Text, CardItem, Content, Header, Left, Body, Title, Right } from 'native-base';
 
 const routeProps = {
@@ -15,6 +16,8 @@ const routeProps = {
 };
 
 export default function Offer() {
+  const route = useRoute();
+  const { offerName, offerTitle, cashback, expiryDate } = route.params;
   return (
     <Container>
       <Content>
