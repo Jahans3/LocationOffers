@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { Notifications } from 'react-native-notifications';
+import { Container, Header, Content, Card, CardItem, Body, Text } from 'native-base';
 
 function sendNotification(offerText) {
   return () => {
@@ -15,38 +16,39 @@ function sendNotification(offerText) {
 function PlaceholderOffer({ offerName = 'Test Offer' }) {
   return (
     <TouchableOpacity onPress={sendNotification(offerName)}>
-      <View
-        style={{
-          width: '100%',
-          height: 150,
-          borderWidth: 1,
-          borderColor: '#000',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <Text>Some offer</Text>
-      </View>
+      <Card>
+        <CardItem>
+          <Body>
+            <Text>Some offer</Text>
+          </Body>
+        </CardItem>
+      </Card>
     </TouchableOpacity>
   );
 }
 
 export default function OffersList() {
   return (
-    <ScrollView>
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-      <PlaceholderOffer />
-    </ScrollView>
+    <Container>
+      <Header />
+      <Content>
+        <ScrollView>
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+          <PlaceholderOffer />
+        </ScrollView>
+      </Content>
+    </Container>
   );
 }
