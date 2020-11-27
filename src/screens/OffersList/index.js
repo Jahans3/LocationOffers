@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, ScrollView, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { ScrollView, TouchableOpacity } from 'react-native';
 import { Notifications } from 'react-native-notifications';
 import { Container, Header, Content, Card, CardItem, Body, Text } from 'native-base';
 
@@ -14,8 +15,11 @@ function sendNotification(offerText) {
 }
 
 function PlaceholderOffer({ offerName = 'Test Offer' }) {
+  const navigation = useNavigation();
+
   return (
-    <TouchableOpacity onPress={sendNotification(offerName)}>
+    <TouchableOpacity onPress={() => navigation.navigate('Offer')}>
+      {/*<TouchableOpacity onPress={sendNotification(offerName)}>*/}
       <Card>
         <CardItem>
           <Body>
