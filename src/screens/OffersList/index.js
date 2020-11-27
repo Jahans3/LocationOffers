@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView, TouchableOpacity } from 'react-native';
 import { Notifications } from 'react-native-notifications';
@@ -110,11 +110,16 @@ const offers = [
 ];
 
 export default function OffersList() {
+  useEffect(() => {
+    setTimeout(() => {
+      sendNotification(`You have ${offers.length} cashback offers within 3km!`);
+    }, 3000);
+  }, []);
   return (
     <Container>
       <Header style={{ backgroundColor: '#006a4d', paddingLeft: 45 }}>
         <Body>
-          <Title>You have {offers.length} offers within 1km!</Title>
+          <Title>You have {offers.length} offers within 3km!</Title>
         </Body>
       </Header>
       <Content>
@@ -122,16 +127,20 @@ export default function OffersList() {
           <CardItem>
             <MapView
               showsUserLocation
-              minZoomLevel={1}
-              style={{ flex: 1, height: 250, width: '100%' }}
-              region={{
-                latitude: 51.51758926035574,
-                longitude: -0.09363967616390254,
-                latitudeDelta: 0,
-                longitudeDelta: 0,
-              }}>
+              camera={{
+                center: {
+                  latitude: 51.51758926035574,
+                  longitude: -0.09363967616390254,
+                },
+                pitch: 0,
+                heading: 0,
+                altitude: 10,
+                zoom: 15,
+              }}
+              style={{ flex: 1, height: 250, width: '100%' }}>
               {offers.map(({ offerTitle, coordinates }) => (
                 <Marker
+                  key={offerTitle}
                   title={offerTitle}
                   coordinate={{
                     latitude: coordinates.lat,

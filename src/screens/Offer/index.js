@@ -33,7 +33,19 @@ export default function Offer() {
           </Body>
         </Header>
         <Card style={{ flex: 1, height: 500, width: '100%' }}>
-          <MapView showsUserLocation style={{ flex: 1, height: 500, width: '100%' }} region={routeProps.coordinates}>
+          <MapView
+            showsUserLocation
+            style={{ flex: 1, height: 500, width: '100%' }}
+            camera={{
+              center: {
+                latitude: 51.51758926035574,
+                longitude: -0.09363967616390254,
+              },
+              pitch: 0,
+              heading: 0,
+              altitude: 10,
+              zoom: 15,
+            }}>
             <Marker title={offerName} coordinate={coords} description="Cashback offer" />
           </MapView>
         </Card>
