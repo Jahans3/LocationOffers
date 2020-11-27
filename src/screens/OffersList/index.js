@@ -23,7 +23,7 @@ function PlaceholderOffer({ offerName, offerTitle, cashback, expiryDate }) {
       <Card>
         <CardItem>
           <Left>
-            <Thumbnail source={require('../../assets/Costacoffee.png')} />
+            <Thumbnail source={require('../../assets/Costa.png')} />
             <Body>
               <Text>{offerTitle}</Text>
               <Text note>{`${offerTitle} ${cashback} Cashback`}</Text>
