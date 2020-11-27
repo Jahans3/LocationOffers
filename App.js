@@ -1,8 +1,7 @@
 import 'react-native-gesture-handler'; // Must be at top of file
 
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { Notifications } from 'react-native-notifications';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import OffersStack from './src/router/OffersStack';
 

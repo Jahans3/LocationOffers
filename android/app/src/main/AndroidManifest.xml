@@ -12,6 +12,7 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyASL4LIWfF6kIE3XWpEn_wfo5HFk4dindc" />
 <!--        <meta-data  android:name="com.dieam.reactnativepushnotification.notification_foreground"-->
 <!--                    android:value="false"/>-->
         <!-- Change the resource name to your App's accent color - or any other color you want -->
