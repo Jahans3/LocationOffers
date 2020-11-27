@@ -111,7 +111,7 @@ const offers = [
 export default function OffersList() {
   return (
     <Container>
-      <Header />
+      <Header style={{ backgroundColor: '#006a4d', paddingLeft: 45 }} />
       <Content>
         <ScrollView>
           {offers.map((offer) => (
